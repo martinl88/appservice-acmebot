@@ -28,10 +28,10 @@
     }
   },
   "variables": {
-    "functionAppName": "[concat(parameters('appNamePrefix'), '.function')]",
+    "functionAppName": "[concat(parameters('appNamePrefix'), '-', uniquestring(resourceGroup().id, deployment().name))]",
     "appServicePlanName": "[concat(parameters('appNamePrefix'), '.serviceplan')]",
     "appInsightsName": "[concat(parameters('appNamePrefix'), '.insights')]",
-    "storageAccountName": "[concat(parameters('appNamePrefix'), '-', uniquestring(resourceGroup().id, deployment().name))]",
+    "storageAccountName": "[concat(parameters('appNamePrefix'), uniquestring(resourceGroup().id, deployment().name))]",
     "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
     "mailAddress": "[parameters('mailAddress')]",
     "acmeEndpoint": "[parameters('acmeEndpoint')]",
